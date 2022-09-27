@@ -1,14 +1,14 @@
 package;
 
+import haxe.crypto.Base64;
 import haxe.Timer;
 import haxe.Resource;
 import haxe.io.Bytes;
 import sys.thread.Thread;
-import naturalName.Name;
 
 
 class Main {
-	static macro function getDefined(key:String):haxe.macro.Expr {
+	private static macro function getDefined(key:String):haxe.macro.Expr {
 		return macro $v{haxe.macro.Context.definedValue(key)}
 	}
 	static function main():Void {
@@ -19,10 +19,10 @@ class Main {
 		for (_ in 0...Std.parseInt(getDefined("threads"))) {
 			Thread.create(() -> {
 				while (true) {
-					MonkeMultiply.Monke.worker(monkimg, './[${monkes}].jpg');
+					MonkeMultiply.Monke.worker(monkimg, './${monkes}.jpg');
 					monkes++;
 					if (Sys.args()[0]!= "--debug") {
-						Sys.print("-MONKE");
+						Sys.print("MONKE");
 					}
 				}
 			});
