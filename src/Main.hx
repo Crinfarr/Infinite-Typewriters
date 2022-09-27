@@ -14,7 +14,7 @@ class Main {
 	static function main():Void {
 		var monkes = 0;
 		var threads = 0;
-		var monkimg:Bytes = Resource.getBytes("monke");
+		var monkimg:Bytes = Resource.getBytes("img");
 
 		for (_ in 0...Std.parseInt(getDefined("threads"))) {
 			Thread.create(() -> {
@@ -22,7 +22,7 @@ class Main {
 					MonkeMultiply.Monke.worker(monkimg, './${monkes}.jpg');
 					monkes++;
 					if (Sys.args()[0]!= "--debug") {
-						Sys.print("MONKE");
+						Sys.print(getDefined("outputString"));
 					}
 				}
 			});

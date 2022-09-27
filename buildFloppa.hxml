@@ -1,0 +1,6 @@
+--class-path src
+--main Main
+--cpp bin
+--verbose
+--resource assets/imgFloppa.jpg@img
+-D threads=500 outputString=BIGFLOPPA

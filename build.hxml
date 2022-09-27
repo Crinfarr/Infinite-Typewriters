@@ -1,6 +1,0 @@
---class-path src
---main Main
---cpp bin
---verbose
---resource assets/img.jpg@monke
--D threads=500
