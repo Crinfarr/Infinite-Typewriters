@@ -1,5 +1,0 @@
-<module>
-    <resources>
-        <resource path="assets" prefix="assets"/>
-    </resources>
-</module>
