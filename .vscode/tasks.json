@@ -1,0 +1,170 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "command": [
+                "haxe",
+                "buildMonkeStandard.hxml"
+            ],
+            "label": "Build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true,
+                "group": "BuildRun"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "command": [
+                "ResourceHacker",
+                "-open ${workspaceFolder}/bin/Main.exe",
+                "-save ${workspaceFolder}/out/Monke.exe",
+                "-action addskip",
+                "-res ${workspaceFolder}/assets/monkeicon.ico",
+                "-mask ICONGROUP,MAINICON"
+            ],
+            "label": "Process Executable",
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "command": [
+                "${workspaceFolder}/bin/Main.exe"
+            ],
+            "label": "Run",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true,
+                "group": "BuildRun"
+            }
+        },
+        {
+            "label": "Build and Run",
+            "type": "shell",
+            "dependsOn": [
+                "Build",
+                "Process Executable",
+                "Run"
+            ],
+            "dependsOrder": "sequence",
+            "command": [
+                "echo build and run complete"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            }
+        },
+        {
+            "type": "shell",
+            "command": [
+                "haxe",
+                "buildMonkeDebug.hxml"
+            ],
+            "label": "Build !DEBUG!",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true,
+                "group": "BuildRun"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "type": "shell",
+            "command": [
+                "ResourceHacker",
+                "-open ${workspaceFolder}/bin/Main-debug.exe",
+                "-save ${workspaceFolder}/out/Monke-debug.exe",
+                "-action addskip",
+                "-res ${workspaceFolder}/assets/monkeicon.ico",
+                "-mask ICONGROUP,MAINICON"
+            ],
+            "label": "Process Executable !DEBUG!",
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            }
+        },
+        {
+            "type": "shell",
+            "command": [
+                "${workspaceFolder}/bin/Main-debug.exe"
+            ],
+            "label": "Run !DEBUG!",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true,
+                "group": "BuildRun"
+            }
+        },
+        {
+            "label": "Build and Run !DEBUG!",
+            "type": "shell",
+            "dependsOn": [
+                "Build !DEBUG!",
+                "Process Executable !DEBUG!",
+                "Run !DEBUG!"
+            ],
+            "dependsOrder": "sequence",
+            "command": [
+                "echo build and run complete"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            }
+        }
+    ]
+}
